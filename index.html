@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leyenda Suprema Kunoichi</title>
+<title> Kunoichi</title>
 
 <style>
 body{
@@ -17,7 +18,7 @@ body{
     height:100vh;
 }
 
-.app{
+.screen{
     background: rgba(0,0,0,0.55);
     border-radius: 25px;
     padding: 25px;
@@ -31,29 +32,15 @@ body{
 h1{ font-size: 26px; margin:0; }
 h2{ font-size: 14px; opacity:0.9; }
 
-#question{
-    font-size: 19px;
-    margin: 22px 0;
-}
-
 button{
-    width: 140px;
-    padding: 14px;
-    margin: 8px;
-    border-radius: 25px;
+    padding: 14px 25px;
+    margin-top: 15px;
+    border-radius: 30px;
     border:none;
-    font-size: 17px;
+    font-size: 16px;
     cursor:pointer;
-}
-
-.true{ background:#00ffae; color:#003333; }
-.false{ background:#ff6b6b; color:#330000; }
-#next{ background:#4dabff; color:white; display:none; }
-
-#result{
-    min-height: 55px;
-    margin-top: 12px;
-    font-size: 15px;
+    background:#4dabff;
+    color:white;
 }
 
 @keyframes fade{
@@ -65,29 +52,74 @@ button{
 
 <body>
 
-<div class="app">
+<div id="intro" class="screen">
 <h1>💖 Kunoichi</h1>
-<h2>Edición Leyenda Suprema</h2>
+<h2>Esta experiencia fue creada solo para ti</h2>
 
-<div id="question"></div>
+<p style="margin-top:20px;font-size:16px;">
+Respira… tómate un momento…  
+y entra en este pequeño universo hecho con cariño ✨
+</p>
 
-<button class="true" onclick="answer(true)">✔ Verdadero</button>
-<button class="false" onclick="answer(false)">✘ Falso</button>
+<button onclick="start()">Comenzar</button>
+</div>
 
-<div id="result"></div>
-<button id="next" onclick="next()">Siguiente ➜</button>
+<div id="game" class="screen" style="display:none;">
+<h1>🌙 Leyenda Suprema</h1>
+<div id="question" style="margin:20px 0;font-size:19px;"></div>
+
+<button onclick="answer(true)">✔ Verdadero</button>
+<button onclick="answer(false)">✘ Falso</button>
+
+<div id="result" style="margin-top:15px;min-height:40px;"></div>
+<button id="next" onclick="next()" style="display:none;">Siguiente ➜</button>
 </div>
 
 <script>
 const q = [
-["Kunoichi es una mujer fuerte, valiente y con un corazón enorme.", true, "Su forma de ser deja huella sin hacer ruido ✨"],
-["Kunoichi tiene una sensibilidad especial que la hace única.", true, "Siente profundo, y eso es un regalo 💖"],
-["Bubu admira la forma en que Kunoichi enfrenta la vida.", true, "Con coraje, dignidad y ternura 🤍"],
-["Kunoichi tiene una luz que calma y acompaña.", true, "Hablar con ella se siente como un lugar seguro 🌙"],
-["Kunoichi es una mujer increíble, incluso en los días difíciles.", true, "Sobre todo en esos días ✨"],
-["Darita y Lisel son una parte hermosa del mundo de Kunoichi.", true, "Dos estrellitas que iluminan su camino 🌟🌟"],
-["La forma en que Kunoichi ama y cuida a Darita y Lisel es admirable.", true, "Eso habla de su enorme corazón 💞"],
-["Bubu respeta profundamente el mundo de Kunoichi y todo lo que ella es.", true, "Su historia, su camino y su esencia 🤍"],
-["Kunoichi mer]()
+["Kunoichi es una mujer increíble.", true, "Y su forma de ser lo demuestra cada día 💖"],
+["Darita y Lisel son una parte hermosa de su mundo.", true, "Dos estrellitas que iluminan su camino 🌟"],
+["La fortaleza de Kunoichi es admirable.", true, "Porque no se rinde, incluso cuando duele 🤍"],
+["Este juego fue creado con cariño real.", true, "Pensando bonito en ti ✨"]
+];
+
+let i = 0;
+
+function start(){
+    document.getElementById("intro").style.display="none";
+    document.getElementById("game").style.display="block";
+    load();
+}
+
+function load(){
+    document.getElementById("question").innerText = q[i][0];
+    document.getElementById("result").innerText = "";
+    document.getElementById("next").style.display="none";
+}
+
+function answer(v){
+    if(v === q[i][1]){
+        document.getElementById("result").innerText = "💖 " + q[i][2];
+    } else {
+        document.getElementById("result").innerText = "🌷 No pasa nada. Lo importante es lo que eres.";
+    }
+    document.getElementById("next").style.display="inline-block";
+}
+
+function next(){
+    i++;
+    if(i < q.length){
+        load();
+    } else {
+        document.getElementById("question").innerText =
+        "🌙 Fin 🌙\n\nGracias por existir tal como eres.\n\n— Bubu 💖";
+        document.getElementById("result").innerText="";
+        document.getElementById("next").style.display="none";
+    }
+}
+</script>
+
+</body>
+</html>
 
 
