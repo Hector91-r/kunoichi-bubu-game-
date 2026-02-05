@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leyenda Kunoichi & Bubu</title>
+
+<style>
+body {
+    margin:0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg,#ff4d6d,#2b1055);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.app {
+    background: rgba(0,0,0,0.45);
+    border-radius: 25px;
+    padding: 22px;
+    width: 95%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    animation: pop 0.6s;
+}
+
+h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+#question {
+    font-size: 20px;
+    margin: 25px 0;
+}
+
+button {
+    width: 135px;
+    padding: 14px;
+    margin: 8px;
+    border-radius: 25px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.true { background: #00ffae; color:#003333; }
+.false { background: #ff6b6b; color:#330000; }
+#next { background:#4dabff; color:white; display:none; }
+
+#result {
+    margin-top: 12px;
+    min-height: 40px;
+}
+
+@keyframes pop {
+    from { transform: scale(0.85); opacity:0; }
+    to { transform: scale(1); opacity:1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+<h1>💖 Kunoichi & Bubu</h1>
+<h2>Versión Leyenda</h2>
+
+<div id="question"></div>
+
+<button class="true" onclick="answer(true)">✔ Verdadero</button>
+<button class="false" onclick="answer(false)">✘ Falso</button>
+
+<div id="result"></div>
+<button id="next" onclick="next()">Siguiente ➜</button>
+</div>
+
+<script>
+const q = [
+["Kunoichi tiene un lugar que nadie más puede ocupar.", true, "Espacio reservado en el corazón 💖"],
+["Bubu puede estar ocupado, pero siempre responde a Kunoichi.", true, "Prioridad máxima 🥇"],
+["Kunoichi puede hacer sonreír a bubu incluso en días difíciles.", true, "Habilidad legendaria ✨"],
+["Bubu tarda más de 5 minutos sin pensar en Kunoichi.", false, "Imposible 😌"],
+["Este juego fue creado con cariño real.", true, "Y con intención bonita 💞"]
+];
+
+let i = 0, score = 0;
+
+function load(){
+    document.getElementById("question").innerText = q[i][0];
+    document.getElementById("result").innerText = "";
+    document.getElementById("next").style.display="none";
+}
+
+function answer(v){
+    if(v === q[i][1]){
+        score++;
+        document.getElementById("result").innerText="✅ Correcto: "+q[i][2];
+    } else {
+        document.getElementById("result").innerText="❌ Fallaste: "+q[i][2]+"\n\nReto: di algo bonito 💌";
+    }
+    document.getElementById("next").style.display="inline-block";
+}
+
+function next(){
+    i++;
+    if(i < q.length) load();
+    else {
+        document.getElementById("question").innerText =
+        "🎉 Fin del juego 🎉\n\nPuntaje: "+score+"/"+q.length+
+        "\n\nPremio: Un audio bonito obligatorio 😏💖";
+        document.getElementById("result").innerText="";
+        document.getElementById("next").style.display="none";
+    }
+}
+
+load();
+</script>
+
+</body>
+</html>
 
