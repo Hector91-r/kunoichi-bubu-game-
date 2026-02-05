@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Kunoichi</title>
+<title>Leyenda Suprema – Kunoichi & Bubu</title>
 
 <style>
 body{
@@ -23,7 +22,7 @@ body{
     border-radius: 25px;
     padding: 25px;
     width: 95%;
-    max-width: 430px;
+    max-width: 440px;
     text-align: center;
     box-shadow: 0 0 35px rgba(0,0,0,0.6);
     animation: fade 1s;
@@ -32,8 +31,13 @@ body{
 h1{ font-size: 26px; margin:0; }
 h2{ font-size: 14px; opacity:0.9; }
 
+p{
+    font-size:16px;
+    line-height:1.4;
+}
+
 button{
-    padding: 14px 25px;
+    padding: 14px 26px;
     margin-top: 15px;
     border-radius: 30px;
     border:none;
@@ -41,6 +45,12 @@ button{
     cursor:pointer;
     background:#4dabff;
     color:white;
+}
+
+.answer{
+    background:#00ffae;
+    color:#003333;
+    margin:6px;
 }
 
 @keyframes fade{
@@ -52,35 +62,47 @@ button{
 
 <body>
 
+<!-- INTRO -->
 <div id="intro" class="screen">
-<h1>💖 Kunoichi</h1>
-<h2>Esta experiencia fue creada solo para ti</h2>
+<h1>🌙 Para Kunoichi</h1>
+<h2>Una pequeña experiencia hecha con cariño</h2>
 
-<p style="margin-top:20px;font-size:16px;">
-Respira… tómate un momento…  
-y entra en este pequeño universo hecho con cariño ✨
+<p style="margin-top:18px;">
+Respira un momento…<br>
+ponte cómoda…<br>
+y entra en este pequeño refugio creado solo para ti ✨
+</p>
+
+<p style="opacity:0.9;">
+No hay prisas. No hay presión.<br>
+Solo un espacio bonito.
 </p>
 
 <button onclick="start()">Comenzar</button>
 </div>
 
+<!-- JUEGO -->
 <div id="game" class="screen" style="display:none;">
-<h1>🌙 Leyenda Suprema</h1>
+<h1>💖 Leyenda Suprema</h1>
+
 <div id="question" style="margin:20px 0;font-size:19px;"></div>
 
-<button onclick="answer(true)">✔ Verdadero</button>
-<button onclick="answer(false)">✘ Falso</button>
+<button class="answer" onclick="answer(true)">✔ Verdadero</button>
+<button class="answer" onclick="answer(false)">✘ Falso</button>
 
-<div id="result" style="margin-top:15px;min-height:40px;"></div>
+<div id="result" style="margin-top:15px;min-height:50px;"></div>
 <button id="next" onclick="next()" style="display:none;">Siguiente ➜</button>
 </div>
 
 <script>
 const q = [
-["Kunoichi es una mujer increíble.", true, "Y su forma de ser lo demuestra cada día 💖"],
-["Darita y Lisel son una parte hermosa de su mundo.", true, "Dos estrellitas que iluminan su camino 🌟"],
-["La fortaleza de Kunoichi es admirable.", true, "Porque no se rinde, incluso cuando duele 🤍"],
-["Este juego fue creado con cariño real.", true, "Pensando bonito en ti ✨"]
+["Kunoichi es una mujer fuerte, sensible y valiente.", true, "Su esencia deja huella sin hacer ruido ✨"],
+["La forma en que Kunoichi ama y cuida es hermosa.", true, "Porque nace desde un corazón sincero 🤍"],
+["Darita y Lisel son dos tesoros que iluminan su vida.", true, "Dos estrellas que la acompañan 🌟🌟"],
+["Kunoichi merece amor bonito, tranquilo y respetuoso.", true, "Del que no duele, no presiona y no lastima 💖"],
+["El shinobi de la sombra camina a su lado, incluso en silencio.", true, "Bubu siempre desea su bienestar 🌙"],
+["Kunoichi es especial tal como es.", true, "Sin tener que cambiar nada ✨"],
+["Este pequeño juego fue creado con cariño real.", true, "Pensando bonito en ti 🤍"]
 ];
 
 let i = 0;
@@ -101,7 +123,7 @@ function answer(v){
     if(v === q[i][1]){
         document.getElementById("result").innerText = "💖 " + q[i][2];
     } else {
-        document.getElementById("result").innerText = "🌷 No pasa nada. Lo importante es lo que eres.";
+        document.getElementById("result").innerText = "🌷 No pasa nada… lo importante es lo valiosa que eres.";
     }
     document.getElementById("next").style.display="inline-block";
 }
@@ -112,8 +134,28 @@ function next(){
         load();
     } else {
         document.getElementById("question").innerText =
-        "🌙 Fin 🌙\n\nGracias por existir tal como eres.\n\n— Bubu 💖";
-        document.getElementById("result").innerText="";
+        "🌙 Mensaje final 🌙\n\n" +
+        "Kunoichi…\n\n" +
+        "Eres una mujer maravillosa.\n" +
+        "Tu sensibilidad, tu fortaleza y tu forma de amar hacen del mundo un lugar más bonito.\n\n" +
+        "Darita y Lisel tienen una mamá increíble.\n\n" +
+        "Nunca olvides lo valiosa que eres.\n\n" +
+        "Y aunque a veces no se note,\n" +
+        "hay un shinobi de la sombra caminando a tu lado,\n" +
+        "deseando que estés bien,\n" +
+        "que sonrías,\n" +
+        "y que la vida te trate bonito.\n\n" +
+        "Gracias por existir tal como eres ✨\n\n" +
+        "— Bubu 💖\n\n\n" +
+        "🎧 Mensaje para el creador:\n" +
+        "Este pequeño minijuego fue hecho con mucho cariño,\n" +
+        "paciencia,\n" +
+        "y con el deseo sincero de regalar una sonrisa.\n\n" +
+        "Si estás leyendo esto,\n" +
+        "significa que alguien pensó bonito en ti.\n\n" +
+        "✨";
+
+        document.getElementById("result").innerText = "";
         document.getElementById("next").style.display="none";
     }
 }
