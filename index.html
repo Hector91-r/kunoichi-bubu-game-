@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leyenda Kunoichi & Bubu</title>
+<title>Leyenda Suprema Kunoichi</title>
 
 <style>
-body {
+body{
     margin:0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg,#ff4d6d,#2b1055);
+    background: radial-gradient(circle at top, #ff4d6d, #2b1055);
     color:white;
     display:flex;
     justify-content:center;
@@ -17,55 +17,48 @@ body {
     height:100vh;
 }
 
-.app {
-    background: rgba(0,0,0,0.45);
+.app{
+    background: rgba(0,0,0,0.55);
     border-radius: 25px;
-    padding: 22px;
+    padding: 25px;
     width: 95%;
-    max-width: 420px;
+    max-width: 430px;
     text-align: center;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    animation: pop 0.6s;
+    box-shadow: 0 0 35px rgba(0,0,0,0.6);
+    animation: fade 1s;
 }
 
-h1 {
-    margin: 0;
-    font-size: 26px;
+h1{ font-size: 26px; margin:0; }
+h2{ font-size: 14px; opacity:0.9; }
+
+#question{
+    font-size: 19px;
+    margin: 22px 0;
 }
 
-h2 {
-    font-size: 14px;
-    opacity: 0.9;
-    margin-bottom: 10px;
-}
-
-#question {
-    font-size: 20px;
-    margin: 25px 0;
-}
-
-button {
-    width: 135px;
+button{
+    width: 140px;
     padding: 14px;
     margin: 8px;
     border-radius: 25px;
-    border: none;
+    border:none;
     font-size: 17px;
-    cursor: pointer;
+    cursor:pointer;
 }
 
-.true { background: #00ffae; color:#003333; }
-.false { background: #ff6b6b; color:#330000; }
-#next { background:#4dabff; color:white; display:none; }
+.true{ background:#00ffae; color:#003333; }
+.false{ background:#ff6b6b; color:#330000; }
+#next{ background:#4dabff; color:white; display:none; }
 
-#result {
+#result{
+    min-height: 55px;
     margin-top: 12px;
-    min-height: 40px;
+    font-size: 15px;
 }
 
-@keyframes pop {
-    from { transform: scale(0.85); opacity:0; }
-    to { transform: scale(1); opacity:1; }
+@keyframes fade{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
 }
 </style>
 </head>
@@ -73,8 +66,8 @@ button {
 <body>
 
 <div class="app">
-<h1>💖 Kunoichi & Bubu</h1>
-<h2>Versión Leyenda</h2>
+<h1>💖 Kunoichi</h1>
+<h2>Edición Leyenda Suprema</h2>
 
 <div id="question"></div>
 
@@ -87,46 +80,14 @@ button {
 
 <script>
 const q = [
-["Kunoichi tiene un lugar que nadie más puede ocupar.", true, "Espacio reservado en el corazón 💖"],
-["Bubu puede estar ocupado, pero siempre responde a Kunoichi.", true, "Prioridad máxima 🥇"],
-["Kunoichi puede hacer sonreír a bubu incluso en días difíciles.", true, "Habilidad legendaria ✨"],
-["Bubu tarda más de 5 minutos sin pensar en Kunoichi.", false, "Imposible 😌"],
-["Este juego fue creado con cariño real.", true, "Y con intención bonita 💞"]
-];
+["Kunoichi es una mujer fuerte, valiente y con un corazón enorme.", true, "Su forma de ser deja huella sin hacer ruido ✨"],
+["Kunoichi tiene una sensibilidad especial que la hace única.", true, "Siente profundo, y eso es un regalo 💖"],
+["Bubu admira la forma en que Kunoichi enfrenta la vida.", true, "Con coraje, dignidad y ternura 🤍"],
+["Kunoichi tiene una luz que calma y acompaña.", true, "Hablar con ella se siente como un lugar seguro 🌙"],
+["Kunoichi es una mujer increíble, incluso en los días difíciles.", true, "Sobre todo en esos días ✨"],
+["Darita y Lisel son una parte hermosa del mundo de Kunoichi.", true, "Dos estrellitas que iluminan su camino 🌟🌟"],
+["La forma en que Kunoichi ama y cuida a Darita y Lisel es admirable.", true, "Eso habla de su enorme corazón 💞"],
+["Bubu respeta profundamente el mundo de Kunoichi y todo lo que ella es.", true, "Su historia, su camino y su esencia 🤍"],
+["Kunoichi mer]()
 
-let i = 0, score = 0;
-
-function load(){
-    document.getElementById("question").innerText = q[i][0];
-    document.getElementById("result").innerText = "";
-    document.getElementById("next").style.display="none";
-}
-
-function answer(v){
-    if(v === q[i][1]){
-        score++;
-        document.getElementById("result").innerText="✅ Correcto: "+q[i][2];
-    } else {
-        document.getElementById("result").innerText="❌ Fallaste: "+q[i][2]+"\n\nReto: di algo bonito 💌";
-    }
-    document.getElementById("next").style.display="inline-block";
-}
-
-function next(){
-    i++;
-    if(i < q.length) load();
-    else {
-        document.getElementById("question").innerText =
-        "🎉 Fin del juego 🎉\n\nPuntaje: "+score+"/"+q.length+
-        "\n\nPremio: Un audio bonito obligatorio 😏💖";
-        document.getElementById("result").innerText="";
-        document.getElementById("next").style.display="none";
-    }
-}
-
-load();
-</script>
-
-</body>
-</html>
 
